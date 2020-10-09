@@ -5,31 +5,34 @@ The eventmining project using data from dyadic animals interacting in the tube t
 * Signal Transformation 
 
 Comparison of signal normalization using continuous, continuous at 90% maximum, binary transformations.
-* cor_dist_map 
 
-Correlation-distance map that is used to determine cell contamination to be removed 
+signal_transformation.mlx 
+* remove contamination
+
+Remove duplicated and contaminated cells using correlation-distance map. Cells that have strong correlation with near-by cells are removed.
+
+cor_dist_map_all_mice.mlx -> Correlation-distance map that is used to determine cell contamination to be removed 
 ### Eventmining
-* Eventmining 18p 
+* Eventmining 
 
-18 pairs tube test event mining with continuous(maximum 90%) or binary transformation 
+Find events where cells are significantly activated together for certain time. 
 
-* Eventmining arena 10p 
+After 1st round event detection, time with events are removed and the remaining time is used for 2nd round detection, in order to detect more complete event profile.
+* Anti-event mining
 
-10 pairs open arena event mining with continuous(maximum 90%) or binary transformation 
-* anti_event 18p 
-
-18 pairs tube test ANTI-event mining with continuous(maximum 90%) or binary transformation 
-* anti_event arena 10p 
-
-10 pairs open arena ANTI-event mining with continuous(maximum 90%) or binary transformation 
+Find events where cells are significantly inactivated together for certain time. 
 * All_events
 
-Alignment of 1st and 2nd round events and anti-events to behaviours and trial onsets 
+Alignment of 1st and 2nd round events and anti-events to behaviours and trial onsets.
+
+4 mlx files of tube test and open arena with continuous/binary data. 
 ### Cell sorting 
 * clustering method
 
-Comparison of neuron clustering methods to visualize population structures in the signal 
-* sort_2_mouse 
+3 clustering methods can be used: mapTmap, UMAP, event cells. 
 
-Concatenate cells from a pair of mice together and perform cell clustering to visualize inter-brain population structures. 
+clustering_method.mlx -> Comparison of neuron clustering methods to visualize population structures in the signal 
+* Apply cell sorting to cells from multiple mice
+
+sort_2_mouse.mlx -> Concatenate cells from a pair of mice together and perform cell clustering to visualize inter-brain population structures. 
 
