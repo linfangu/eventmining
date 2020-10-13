@@ -38,10 +38,13 @@ alp=0.01; % the percentage of mk conbinations to include
 [em{1,1}.K,em{1,1}.M,em{1,1}.time,em{1,1}.cells,em{1,1}.pvl]=findmk(eve,randeve,alp,ca_2,thre,type);
 
 % count number of Events at each time point 
-time=em{1,1}.time;K=em{1,1}.K;
+time=em{1,1}.time;K=em{1,1}.K;M=em{1,1}.M;
 ne=cell(N,nm);
 for p=1:N
     for m = 1:nm
+        % --- remove duplicate events of smaller m ---- 
+        [time{p,m}]=remove_dup_event(K{p,m},M{p,m},time{p,m});
+        % --- count events at each time --- 
         s=sum(em{1,1}.timefilter{p,m});
         ne{p,m}=zeros(1,s);
         for r=1:length(time{p,m})% combi index
