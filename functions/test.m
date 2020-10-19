@@ -1,10 +1,10 @@
-% validate remove duplicate event function... 
-% need to embed in the events mining functions 
 
-time=em{1,1}.time;K=em{1,1}.K;M=em{1,1}.M;
-N=18;nm=2;
+%% test the limitk function 
 for p=1:N
-    for m = 1:nm
-        [time{p,m}]=remove_dup_event(K{p,m},M{p,m},time{p,m});
-    end
+for m=1:2
+[K,M,time]=limitk(klist,em{1,1}.K{p,m},em{1,1}.M{p,m},em{1,1}.time{p,m});
+s=size(ca_cl{p,m},2);
+[ne_klist{p,m}]=count_eve(K{p,m},time{p,m},s);
 end
+end
+em{1,1}.ne_klist=ne_klist;em{1,1}.klist=klist;

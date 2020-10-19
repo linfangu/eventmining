@@ -11,6 +11,7 @@ arguments
     ne_1
     options.type (1,1) string = "eve"
     options.thre (1,1) {mustBeNumeric} = 0.5
+    options.countevent (1,1) = "all"
 end
 type=options.type;thre=options.thre;
 em=cell(1,1);[N,nm]=size(ca_cl);
@@ -45,14 +46,20 @@ for p=1:N
         % --- remove duplicate events of smaller m ---- 
         [time{p,m}]=remove_dup_event(K{p,m},M{p,m},time{p,m});
         % --- count events at each time --- 
-        s=sum(em{1,1}.timefilter{p,m});
-        ne{p,m}=zeros(1,s);
-        for r=1:length(time{p,m})% combi index
-            for e=1:length(time{p,m}{r}) % events for this combi
-                ne{p,m}(time{p,m}{r}(e):time{p,m}{r}(e)+K{p,m}(r))=ne{p,m}(time{p,m}{r}(e):time{p,m}{r}(e)+K{p,m}(r))+1;
-                % for each event add one
-            end
-        end
+        s=sum(em{2,1}.timefilter{p,m});
+        [ne{p,m}]=count_eve(K{p,m},time{p,m},s);
     end
 end
 em{1,1}.ne=ne;
+% count event using specified k list 
+if isnumeric(options.countevent)
+    ne_klist=cell(N,nm);
+    for p=1:N
+        for m = 1:nm
+            [K{p,m},M{p,m},time{p,m}]=limitk(options.countevent,K{p,m},M{p,m},time{p,m});
+            s=sum(em{2,1}.timefilter{p,m});
+            [ne_klist{p,m}]=count_eve(K{p,m},time{p,m},s);
+        end
+    end
+    em{1,1}.ne_klist=ne_klist;
+end
