@@ -46,7 +46,7 @@ for p=1:N
         % --- remove duplicate events of smaller m ---- 
         [time{p,m}]=remove_dup_event(K{p,m},M{p,m},time{p,m});
         % --- count events at each time --- 
-        s=sum(em{2,1}.timefilter{p,m});
+        s=sum(em{1,1}.timefilter{p,m});
         [ne{p,m}]=count_eve(K{p,m},time{p,m},s);
     end
 end
@@ -57,7 +57,7 @@ if isnumeric(options.countevent)
     for p=1:N
         for m = 1:nm
             [K{p,m},M{p,m},time{p,m}]=limitk(options.countevent,K{p,m},M{p,m},time{p,m});
-            s=sum(em{2,1}.timefilter{p,m});
+            s=sum(em{1,1}.timefilter{p,m});
             [ne_klist{p,m}]=count_eve(K{p,m},time{p,m},s);
         end
     end
