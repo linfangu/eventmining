@@ -20,6 +20,7 @@ arguments
     options.anti (1,1) logical = 1
     options.trial (1,1) logical = 1
     options.logscale (1,1) logical = 0
+    options.behaviour (1,1) logical =1
 end
 
 
@@ -61,6 +62,8 @@ if options.trial
         line([allonset(i) allonset(i)],yl,'Color','k','LineStyle','--','HandleVisibility','off')
     end
 end
+xlim([1 length(em1)])
+if options.behaviour 
 % ---self-behaviour------ %
 L=size(beh,1); s=floor(L/30); % 1s bin
 sbbin=zeros(s,3);
@@ -87,6 +90,6 @@ end
 %set(legend, 'NumColumns' ,2)
 line(xlim,[0 0],'Color','k','HandleVisibility','off');line(xlim,[-yl(2)/5 -yl(2)/5],'Color','k','HandleVisibility','off')
 ylim([-2*yl(2)/5 yl(2)]); xlim([1 length(em1)])
+end
 hold off
-
 end
