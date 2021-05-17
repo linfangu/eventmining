@@ -25,7 +25,7 @@ for p=1:N
             % check p value
             pvl{p,m}(k)=sum(randeve{p,m}(:,M{p,m}(k),K{p,m}(k))>eve{p,m}(M{p,m}(k),K{p,m}(k)))/100;
             if pvl{p,m}(k)>0.05 % skip combi if not significant
-                sprintf('p%dm%dcombination%d,p=%.2f',p,m,k,pvl{p,m}(k))
+                % sprintf('p%dm%dcombination%d,p=%.2f',p,m,k,pvl{p,m}(k))
                 continue
             end
             if type =="eve"

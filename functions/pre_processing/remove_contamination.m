@@ -1,4 +1,4 @@
-function [remov]=remove_contamination(E,dis_th)
+function [E,remov]=remove_contamination(E,dis_th)
 % remove highly correlated close-by cells
 % inputs: E: signal in the original Hong lab format, dis_th: (numeric)threshold of distance within which to be considered
 % contamination 
@@ -16,6 +16,7 @@ for p=1:N
         th(p,m) = cor_threshold(cormat_v,distmat); % obtain threshold for correlation map
         cormat(cormat<=th(p,m))=0;cormat(squareform(distmat)>dis_th)=0; % remove smaller than threshold and big distance
         [remov{p,m}]=greedy_remove(cormat,0);
+        E{p}{m}.dFFCalciumTraces(:,remov{p,m})=[];
         % how many cells were removed?
         sprintf('Pair%d,Mouse%d,%d(%.2g%%) cells removed',p,m,length(remov{p,m}),100*length(remov{p,m})/nc)
     end
