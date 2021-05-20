@@ -19,6 +19,7 @@ For activity events, after 1st round event detection, time with events are remov
 * 3 event processing (remove highly overlapped events, select representative lengths of events, etc.)
 
 Since events are redundant in time and neuronal composition, the following steps are taken:
+
     - if there are many events with same start (t0) and length (k), only one with highest neuron number (m) is kept.
     - for each event length (k), remove events that are highly overlapped with others in time (>50%).
     - take events at 4 different lengths that span all Ks for analysis. 
@@ -28,11 +29,14 @@ In practice, these events processing steps are done separately for each analysis
 * 4 compare events at different conditions 
 
 A few scientific questions to test are 
+
 _(1) are events of interacting animals more synchronized than non-interacting animals?
 To test synchronization of events between animals, we can use distance between events, or the overall overlap in event coverage. 
 a comparison of within pair event synchronization and between pair event synchronization is in folder "simplified_event_analysis".
 a comparison of same pairs of animals when separated and when interacting is in folder "sep_exp".
+
 _(2) are events correlated with occurance of behaviors?
+
 _(3) the cell composition of events - e.g. what changed in interaction and separation; when cells from two animals jointly form a event 
 
 ### basic analysis on the population (dimensionality reduction and stability check)
