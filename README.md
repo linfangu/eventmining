@@ -19,9 +19,9 @@ For activity events, after 1st round event detection, time with events are remov
 * 3 event processing (remove highly overlapped events, select representative lengths of events, etc.)
 
 Since events are redundant in time and neuronal composition, the following steps are taken:
-- if there are many events with same start (t0) and length (k), only one with highest neuron number (m) is kept.
-- for each event length (k), remove events that are highly overlapped with others in time (>50%).
-- take events at 4 different lengths that span all Ks for analysis. 
+    - if there are many events with same start (t0) and length (k), only one with highest neuron number (m) is kept.
+    - for each event length (k), remove events that are highly overlapped with others in time (>50%).
+    - take events at 4 different lengths that span all Ks for analysis. 
 Refer to "optimize_event_mining.mlx" and "optimize_event_mining_tube.mlx" for a visualization of the effect of the listed steps. 
 In practice, these events processing steps are done separately for each analysis in step 4, and then visualized as lines on the time axis. 
 
