@@ -6,15 +6,18 @@ The eventmining project uses calcium imaging data from dyadic animals interactin
 ### population event analysis 
 The basic steps for event mining are: 
 * 1 pre-processing (transform data and remove contamination)
+
 signal_transformation.mlx (a Comparison of signal normalization using continuous, continuous at 90% maximum, binary transformations.)
 cor_dist_map_all_mice.mlx (Remove duplicated and contaminated cells using correlation-distance map. Cells that have strong correlation with near-by cells are removed.)
 
 * 2 event mining (loop for all popolation synchronized activity/silencing events, test significance with random shuffling data)
+
 For activity events, after 1st round event detection, time with events are removed and the remaining time is used for 2nd round detection, in order to detect more complete event profile. 
 
 “Generate_event_data.m” shows codes for the event mining process, including preprocessing steps
 
 * 3 event processing (remove highly overlapped events, select representative lengths of events, etc.)
+
 Since events are redundant in time and neuronal composition, the following steps are taken:
 - if there are many events with same start (t0) and length (k), only one with highest neuron number (m) is kept.
 - for each event length (k), remove events that are highly overlapped with others in time (>50%).
@@ -23,6 +26,7 @@ Refer to "optimize_event_mining.mlx" and "optimize_event_mining_tube.mlx" for a 
 In practice, these events processing steps are done separately for each analysis in step 4, and then visualized as lines on the time axis. 
 
 * 4 compare events at different conditions 
+
 A few scientific questions to test are 
 _(1) are events of interacting animals more synchronized than non-interacting animals?
 To test synchronization of events between animals, we can use distance between events, or the overall overlap in event coverage. 
