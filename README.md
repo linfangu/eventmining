@@ -30,14 +30,15 @@ In practice, these events processing steps are done separately for each analysis
 
 A few scientific questions to test are 
 
-_(1) are events of interacting animals more synchronized than non-interacting animals?
+_(1) are events of interacting animals more synchronized than non-interacting animals?_
+
 To test synchronization of events between animals, we can use distance between events, or the overall overlap in event coverage. 
 a comparison of within pair event synchronization and between pair event synchronization is in folder "simplified_event_analysis".
 a comparison of same pairs of animals when separated and when interacting is in folder "sep_exp".
 
-_(2) are events correlated with occurance of behaviors?
+_(2) are events correlated with occurance of behaviors?_
 
-_(3) the cell composition of events - e.g. what changed in interaction and separation; when cells from two animals jointly form a event 
+_(3) the cell composition of events - e.g. what changed in interaction and separation; when cells from two animals jointly form a event_
 
 ### basic analysis on the population (dimensionality reduction and stability check)
 * clustering 
@@ -57,6 +58,9 @@ see "ica" folder
 * frequency power stability 
 
 At what frequencies are the signals reliable? 
-see "stability_analysis.mlx" 
+
+See "stability_analysis.mlx" 
+
 Do different cell types show same patterns of stability at different frequencies? And - across different conditions (separation and interaction)?
+
 See analysis of frequency stability in folders for particular datasets (sep_exp & camkiigaba)
