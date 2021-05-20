@@ -1,5 +1,6 @@
 function [time,cells]=remove_span_onset(K,time,cells,onset,options)
-% remove the events tht spans the trial onsets 
+% remove the events tht spans the trial onsets or happens within n seconds
+% from trial onsets 
 % input: K - num array; time,cells - cell array; onset (num array) binary 0/1 for onsets at each
 % time point same as event time scale 
 arguments
@@ -9,6 +10,7 @@ cells
 onset
 options.aligned (1,1) logical = 1
 options.timefilter
+options.n (1,1) =0
 end
 for i=1:length(K)
     l=length(time{i});
@@ -20,7 +22,7 @@ for i=1:length(K)
         else
             eve=time{i}(j);
         end
-        if sum(onset(eve:eve+K(i)))>0
+        if sum(onset(max(eve-options.n,1):eve+K(i)))>0
             rmv=[rmv,j];
         end
     end

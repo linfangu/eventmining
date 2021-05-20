@@ -1,5 +1,5 @@
 function eventplot_arena(em1,em2,em2filter,antieve,beh,sbename,opbeh,opbename,options)
-% plot event and behaviours on time line for tube test
+% plot event and behaviours on time line 
 % inputs: em1/2/antieve - (col array) number of event at time line for 1st
 % round, 2nd round, antievents respectively; em2filter - filter applied
 % from original time line to 2nd round event detection

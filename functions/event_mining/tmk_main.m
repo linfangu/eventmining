@@ -22,7 +22,7 @@ for p=1:N
                 % merge events from the two rounds of detection
                 ev_merge{p,m}{k}=combine_2_r(em{1,1}.allt{p,m}{k},find(em{2,1}.timefilter{p,m}),em{2,1}.allt{p,m}{k},'position','center',"k",klist{k});
             elseif options.nround==1
-                ev_merge{p,m}{k}=allt{p,m}{k}+klist{k}/2;
+                ev_merge{p,m}{k}=allt{k}+klist{k}/2;
             end
             ev_merge{p,m}{k}=remove_time_ovp(ev_merge{p,m}{k},klist{k}); % remove highly overlapped events
         end
